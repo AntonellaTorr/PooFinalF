@@ -9,7 +9,8 @@ Class {
 		'botonAceptarPropuesta',
 		'botonGenerarListado',
 		'botonGenerarPropuesta',
-		'botonSalida'
+		'botonSalida',
+		'botonIniciarDia'
 	],
 	#category : #FAI2991
 }
@@ -30,9 +31,11 @@ GestorVisual >> agregarBotones [
 	botonAceptarPropuesta := Boton nombre: 'Aceptar Propuesta' tamanio: 250 @ 50.
 	botonGenerarPropuesta := Boton	nombre: 'Generar Propuesta'	tamanio: 250 @ 50.
 	botonGenerarListado := Boton nombre: 'Generar Listado' tamanio: 250 @ 50.
+	botonIniciarDia := Boton nombre: 'Iniciar Dia' tamanio: 250 @ 50.
 	botonSalida := Boton nombre: 'X' tamanio: 30 @ 30.
 
 			
+	botonIniciarDia disenioBoton.
 	botonRegistrarPostulante disenioBoton.
 	botonRegistrarSolicitud disenioBoton.
 	botonRegistrarEmpresaSolicitante disenioBoton.
@@ -47,6 +50,7 @@ GestorVisual >> agregarBotones [
 	botonAceptarPropuesta 	left: 200;	top: 400; 	mouseAction: [ AceptarPropuesta crearCon: 'Aceptar Propuesta a solicitud ' gestorAsociado: unGestor ].
 	botonGenerarListado left: 500; top: 400; mouseAction: [ Listados	crearCon: 'Generar Listados' gestorAsociado: unGestor ].
 	botonRegistrarEmpresaSolicitante left: 800;	top: 400; mouseAction: [ RegistrarEmpresaSolicitante crearCon: 'Registrando una empresa solicitante'	gestorAsociado: unGestor ].
+	botonIniciarDia left: 500;	top: 550; mouseAction: [ IniciarDia crearCon: 'Iniciar Dia' gestorAsociado: unGestor ].
 			
 	botonSalida
 		left: 30;
@@ -58,6 +62,7 @@ GestorVisual >> agregarBotones [
 		addMorph: botonRegistrarPostulante;
 		addMorph: botonGenerarPropuesta;
 		addMorph: botonAceptarPropuesta;
+		addMorph:botonIniciarDia;
 		addMorph: botonGenerarListado;
 		addMorph: botonSalida.
 ]
