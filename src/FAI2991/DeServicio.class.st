@@ -21,10 +21,12 @@ unaS inicializarConId: unID fechaVal:unaFechaValidez caracteristicas: car tipo:t
 
 { #category : #'as yet unclassified' }
 DeServicio >> cumpleRequisitos: pos [ 
-|res cumple|
-res:=super cumpleRequisitos: pos.
-cumple:=res ifTrue: [ pos puedeSerPostulante:monto tipo:tipo].
-^cumple.
+    | res cumple |
+    res := super cumpleRequisitos: pos.
+    cumple := res
+                  ifTrue: [ pos puedeSerPostulante: monto tipo: tipo ]
+                  ifFalse: [ false ].
+    ^ cumple
 
 ]
 

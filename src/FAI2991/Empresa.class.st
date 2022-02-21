@@ -64,8 +64,8 @@ Empresa >> puedeSerPostulante: monto tipo:ti [
 
 { #category : #'as yet unclassified' }
 Empresa >> verificarRango: monto [
-|maximo valorPunto|
-valorPunto:= Empresa getValorPorPunto.
-maximo:=valorPunto*rango. 
+|maximo|
+
+maximo:=VALORPUNTO *rango. 
 ^(monto<=maximo)
 ]

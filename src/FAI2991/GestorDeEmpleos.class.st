@@ -115,13 +115,11 @@ colPropuestas := nuevaCol.]
 
 { #category : #'as yet unclassified' }
 GestorDeEmpleos >> encontrarPostulantes: sol [
-	| colPos |
-	colPos := OrderedCollection new.
-	colPostulantes
-		ifNotNil: [ colPostulantes
-				do: [ :pos | (sol cumpleRequisitos: pos)
-						ifTrue: [ colPos add: pos ] ] ].
-	^ colPos
+ | colPos |
+    colPos := OrderedCollection new.
+    colPostulantes ifNotNil: [ 
+colPos:=    colPostulantes select: [ :pos | (sol cumpleRequisitos: pos)] ].
+    ^ colPos
 ]
 
 { #category : #'as yet unclassified' }

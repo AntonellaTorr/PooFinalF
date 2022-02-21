@@ -55,10 +55,9 @@ incumbencias:= incumben.
 
 { #category : #'as yet unclassified' }
 Persona >> puedeSerPostulante:monto tipo:tip [
-|exito maxIndividual|
+|exito|
 exito:=false. 
-maxIndividual:= Persona getMaximo. 
-(monto<=maxIndividual ) ifTrue:[exito:=true].
+(monto<=MAXIMOINDIVIDUAL  ) ifTrue:[exito:=true].
 ^exito.
 
 
