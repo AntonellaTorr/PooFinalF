@@ -1,0 +1,134 @@
+Class {
+	#name : #RegistrarEmpresaSolicitante,
+	#superclass : #Ventana,
+	#instVars : [
+		'botonRegistrar',
+		'nombreEmpresa',
+		'rubro1',
+		'rubro2',
+		'rubro3',
+		'rubro4',
+		'rango',
+		'producto1',
+		'producto2',
+		'producto3',
+		'listadoEmpresasSol',
+		'tipo'
+	],
+	#category : #FAI2991
+}
+
+{ #category : #'as yet unclassified' }
+RegistrarEmpresaSolicitante >> crearComponentes [
+    | colProductos colRubros espacioDerecha tituloRan tituloRub|
+    botonRegistrar    := Boton nombre: 'Guardar' tamanio: 200 @ 30.
+    nombreEmpresa     := RubTextFieldMorph new.
+    rango             := RubTextFieldMorph new.
+    listadoEmpresasSol := RubScrolledTextMorph new.
+    rubro1         := CheckboxMorph new.
+    rubro2         := CheckboxMorph new.
+    rubro3         := CheckboxMorph new.
+    rubro4         := CheckboxMorph new.
+    producto1     := CheckboxMorph new.
+    producto2     := CheckboxMorph new.
+    producto3     := CheckboxMorph new.
+
+    espacioDerecha:= self left + 100.
+    tituloRan := Titulo crearConTitulo: 'Ingrese el rango' tam: 15.
+
+    tituloRub := Titulo crearConTitulo: 'Selecione el rubro' tam:  15.
+	 tituloRub top: 50; left: espacioDerecha; color: Color yellow .
+	
+
+
+
+  
+    nombreEmpresa extent: 400 @ 90; left: espacioDerecha ; top: tituloRub bottom + 60; ghostText: 'Ingrese el nombre'; borderStyle: (BottomBorder new width: 2); color: (Color r: 0.40 g: 0.42 b: 0.60).
+ 
+
+    rubro1 label: 'Ropa'; extent: 100 @ 20; left: espacioDerecha ; top: nombreEmpresa bottom + 50.
+    rubro2 label: 'Limpieza'; extent: 100 @ 20; left: espacioDerecha + 100; top: nombreEmpresa bottom + 50.
+    rubro3 label: 'Mecanica'; extent: 100 @ 20; left: espacioDerecha ; top: nombreEmpresa bottom + 90.
+    rubro4 label: 'Construccion'; extent: 100 @ 20; left: espacioDerecha + 100; top: nombreEmpresa bottom + 90.
+"acomodar esto"
+ 	 producto1 label: 'Repuestos'; extent: 100 @ 20; left: espacioDerecha  ; top: nombreEmpresa bottom + 200.
+    producto2 label: 'Jabon'; extent: 100 @ 20; left: espacioDerecha + 100; top: nombreEmpresa bottom + 200.
+    producto3 label: 'Ladrillos'; extent: 100 @ 20; left: espacioDerecha  ; top: nombreEmpresa bottom + 250.
+
+
+
+    tituloRan top: rubro3 bottom + 60; left: espacioDerecha; color: Color yellow.
+
+    rango extent: 400 @ 90; left: espacioDerecha ; top: tituloRan bottom + 50; ghostText: 'Ingrese el rango'; borderStyle: (BottomBorder new width: 2); color: (Color r: 0.40 g: 0.42 b: 0.60).
+
+    botonRegistrar left: self left + 50; top: rango bottom + 50.
+
+    listadoEmpresasSol beReadOnly; extent: 300 @ 500; left: self left + 500; top: 60.
+
+tipo := SearchMorph new.
+		tipo content: 'Actividades Uniformes'.
+		tipo content: 'Actividades Puntuales'.
+		tipo content: 'Combinadas'.
+ 
+        self addMorph: tituloRub; 
+        addMorph: tituloRan;
+        addMorph: botonRegistrar;
+        addMorph: nombreEmpresa;
+        addMorph: rango;
+        addMorph: rubro1;
+        addMorph: rubro2;
+        addMorph: rubro3;
+        addMorph: rubro4;
+  		  addMorph: producto1;
+        addMorph: producto2;
+        addMorph: producto3;
+        addMorph: listadoEmpresasSol;
+		  addMorph: tipo. 
+		
+
+    UnGestor addDependent: self.
+    botonRegistrar
+        mouseAction: [ colProductos := OrderedCollection new.
+            colRubros := OrderedCollection new.
+            rubro1 buttonMorph selected
+                ifTrue: [ colRubros add: rubro1 label ].
+            rubro2 buttonMorph selected
+                ifTrue: [ colRubros add: rubro2 label ].
+            rubro3 buttonMorph selected
+                ifTrue: [ colRubros add: rubro3 label ].
+            producto1 buttonMorph selected
+                ifTrue: [ colProductos add: producto1 label ].
+            producto2 buttonMorph selected
+                ifTrue: [ colProductos add: producto2 label ].
+            producto3 buttonMorph selected
+                ifTrue: [ colProductos add: producto3 label ] .
+
+ 	UnGestor  registrarEmpresasSolicitantes: nombreEmpresa text asString
+				rubro: colRubros
+				tipo: tipo selectedItem
+				rango: rango 
+				productos: colProductos. 
+				self update: UnGestor getColPostulantes
+				 ].
+			
+	
+
+]
+
+{ #category : #initialization }
+RegistrarEmpresaSolicitante >> initialize [
+
+	super initialize.
+	self crearComponentes. 
+	 
+
+	
+]
+
+{ #category : #'as yet unclassified' }
+RegistrarEmpresaSolicitante >> update:colActualizada [
+	colActualizada
+		ifEmpty: [ listadoEmpresasSol  setText: 'Listado Empresas Solicitantes' ]
+		ifNotEmpty: [ listadoEmpresasSol setText: (UnGestor  colAString: colActualizada ) ]. 
+
+]
