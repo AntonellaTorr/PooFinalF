@@ -43,19 +43,6 @@ Listados >> crearComponentes [
 	
 	UnGestor addDependent: self.		
 
-	
-	"Conexion con la parte logica"
-	botonSolPendientesEmpresa mouseAction: [ self mostrarFormListadoPendientesEmpresa ].
-	botonSolAtendidas mouseAction: [ self mostrarListado. 
-		self update:(UnGestor generarListadoSolResueltas)].
-	botonlistadoSolPendientesFecha mouseAction: [ self mostrarFormListadoPendientesFecha].
-	botonCantSol mouseAction: [ self mostrarListado. 
-		self update:(UnGestor generarListadoEmpresasOrdenadas )].
-	
-	botonGenerarE mouseAction: [self update: (UnGestor generarListadoSolPendientes: nombreE text asString )].
-	botonGenerarF mouseAction: [self update:(UnGestor generarListadoSolFecha: calendario date).].
-"parte visual"
-
 	listado  beReadOnly; extent: 300 @ 500; left: self left + 500; top: 60.
 	botonSolAtendidas   left: self left + 50; top:50.	
 	botonSolPendientesEmpresa   left: self left + 50; top:100. 
@@ -138,6 +125,19 @@ calendario hide.
 nombreE hide.
 titulo1 hide.
 botonGenerarF hide.
+]
+
+{ #category : #'as yet unclassified' }
+Listados >> mostrarListados [
+	botonSolPendientesEmpresa mouseAction: [ self mostrarFormListadoPendientesEmpresa ].
+	botonSolAtendidas mouseAction: [ self mostrarListado. 
+		self update:(UnGestor generarListadoSolResueltas)].
+	botonlistadoSolPendientesFecha mouseAction: [ self mostrarFormListadoPendientesFecha].
+	botonCantSol mouseAction: [ self mostrarListado. 
+		self update:(UnGestor generarListadoEmpresasOrdenadas )].
+	
+	botonGenerarE mouseAction: [self update: (UnGestor generarListadoSolPendientes: nombreE text asString )].
+	botonGenerarF mouseAction: [self update:(UnGestor generarListadoSolFecha: calendario date).].
 ]
 
 { #category : #updating }

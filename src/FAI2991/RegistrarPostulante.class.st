@@ -27,7 +27,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 RegistrarPostulante >> crearComponentes [
-| espacioDerecha colR colP titulo1| 
+| espacioDerecha titulo1| 
 	postulantePersona := Boton nombre: 'Postulante Persona' tamanio: 200 @ 30.
 	postulanteEmpresa := Boton nombre: 'Postulante Empresa' tamanio: 200 @ 30.
 	postulanteEmpresaCombinada  := Boton nombre: 'Postulante Empresa Combinada' tamanio: 200 @ 30.
@@ -114,37 +114,8 @@ RegistrarPostulante >> crearComponentes [
   	self iniciar.	
 
     UnGestor addDependent: self.	
-postulantePersona  mouseAction: [  self mostrarFormularioP ].
-	postulanteEmpresa  mouseAction: [  self mostrarFormularioE].
-	postulanteEmpresaCombinada  mouseAction: [  self mostrarFormularioEC ].
-		
-		
-	
 
-	
-	
-	
-	
-	guardadoPersona   mouseAction: [ 		"registra postulante con sus incumbencias y sus respectivos datos"
-				colR:= OrderedCollection new.
-	(rubro1 buttonMorph selected) ifTrue: [ colR add:  rubro1 label ].	
-		(rubro2 buttonMorph selected) ifTrue: [ colR add: rubro2 label ].
-			(rubro3 buttonMorph selected)	ifTrue: [ colR add: rubro3 label ].
-				
-				 UnGestor registrarPostulante: colR nombre: nombre text asString DNI:DNI text asString	 .  
-					
-					
-					 self update: UnGestor getColPostulantes.
-			].
-	guardadoEmpresa  mouseAction: [  UnGestor registrarPostulante: colR nombre: nombre text asString tipo: tipo   rango: rango.  self update: UnGestor getColPostulantes.].
-	guardadoEmpresaC  mouseAction: [ colP:= OrderedCollection new.
-					(producto1) buttonMorph selected ifTrue: [ colP add: producto1 label ].
-					(producto2) buttonMorph selected ifTrue: [ colP add: producto2 label ].
-               (producto3) buttonMorph selected  ifTrue: [ colP add: producto3 label ] .
-		 UnGestor registrarPostulante:  colR nombre: nombre text asString tipo: tipo   rango: rango colProductos:colP.
-	 self update: UnGestor getColPostulantes.].
-	
-	"falta setear las cosas en pantalla en la ubicacion correta"
+
 		
 		
 ]
@@ -246,6 +217,43 @@ RegistrarPostulante >> mostrarFormularioP [
 	guardadoEmpresa hide.
 	guardadoEmpresaC hide. 
 
+]
+
+{ #category : #'as yet unclassified' }
+RegistrarPostulante >> registrarPostulantes [
+|colR  colR2 colR3 colP|
+	postulantePersona  mouseAction: [  self mostrarFormularioP ].
+	postulanteEmpresa  mouseAction: [  self mostrarFormularioE].
+	postulanteEmpresaCombinada  mouseAction: [  self mostrarFormularioEC ].
+		
+		
+	guardadoPersona   mouseAction: [ 	
+				colR:= OrderedCollection new.
+				(rubro1 buttonMorph selected) ifTrue: [ colR add:  rubro1 label ].	
+				(rubro2 buttonMorph selected) ifTrue: [ colR add: rubro2 label ].
+				(rubro3 buttonMorph selected)	ifTrue: [ colR add: rubro3 label ].
+				UnGestor registrarPostulante: colR nombre: nombre text asString DNI:DNI text asString	 .  
+				self update: UnGestor getColPostulantes.
+			].
+	guardadoEmpresa  mouseAction: [  
+				colR2:= OrderedCollection new.
+				(rubro1 buttonMorph selected) ifTrue: [ colR2 add:  rubro1 label ].	
+				(rubro2 buttonMorph selected) ifTrue: [ colR2 add: rubro2 label ].
+				(rubro3 buttonMorph selected)	ifTrue: [ colR2 add: rubro3 label ].
+				UnGestor registrarPostulante: colR nombre: nombre text asString tipo: tipo   rango: rango.  self update: UnGestor getColPostulantes.].
+	
+	guardadoEmpresaC  mouseAction: [
+					colR3:= OrderedCollection new.
+					(rubro1 buttonMorph selected) ifTrue: [ colR3 add:  rubro1 label ].	
+					(rubro2 buttonMorph selected) ifTrue: [ colR3 add: rubro2 label ].
+					(rubro3 buttonMorph selected)	ifTrue: [ colR3 add: rubro3 label ].
+						
+					 colP:= OrderedCollection new.
+					(producto1) buttonMorph selected ifTrue: [ colP add: producto1 label ].
+					(producto2) buttonMorph selected ifTrue: [ colP add: producto2 label ].
+               (producto3) buttonMorph selected  ifTrue: [ colP add: producto3 label ] .
+		 UnGestor registrarPostulante:  colR nombre: nombre text asString tipo: tipo   rango: rango colProductos:colP.
+	 self update: UnGestor getColPostulantes.].
 ]
 
 { #category : #'as yet unclassified' }

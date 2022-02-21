@@ -84,5 +84,5 @@ cantSolicitudesResueltas :=0.
 
 { #category : #printing }
 EmpresaSolicitante >> toString [ 
-^'Nombre Empresa: ', (empresa getNombre).
+^'Empresa: ', (empresa toString), String cr, 'colSolicitudes: ' ,colSolicitudes asString,String cr, 'cantSolicitudes resueltas ',cantSolicitudesResueltas  .
 ]

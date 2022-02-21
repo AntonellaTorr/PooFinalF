@@ -38,3 +38,10 @@ super inicializarConId: unID fechaVal:unaFechaValidez caracteristicas: car tipo:
 producto := produc.
 
 ]
+
+{ #category : #printing }
+YProducto >> toString [ 
+|cadena|
+cadena:= super toString. 
+^cadena, 'producto: ', producto.
+]

@@ -40,3 +40,10 @@ estado:= 'pendiente'.
 tipo:= tip.
 monto:=m. 
 ]
+
+{ #category : #printing }
+DeServicio >> toString [ 
+|cadena|
+cadena:= super toString. 
+^cadena, 'tipo: ', tipo, 'monto: ',monto.
+]

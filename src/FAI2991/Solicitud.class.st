@@ -49,5 +49,5 @@ fechaValidez := fechaNueva.
 
 { #category : #printing }
 Solicitud >> toString [ 
-^'Solicitud con id: ', id asString, ' fechaValidez ', (fechaValidez asString),' estado: ', estado. 
+^'Solicitud con id: ', id asString, ' fechaValidez ', (fechaValidez asString), 'caracteristicas ', caracteristicas,' estado: ', estado. 
 ]

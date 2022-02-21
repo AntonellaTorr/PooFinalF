@@ -62,6 +62,14 @@ Empresa >> puedeSerPostulante: monto tipo:ti [
 
 ]
 
+{ #category : #printing }
+Empresa >> toString [
+|cadena|
+cadena:= super toString.
+^cadena, ' tipo: ',tipo, ' rango: ', rango.
+
+]
+
 { #category : #'as yet unclassified' }
 Empresa >> verificarRango: monto [
 |maximo|

@@ -12,12 +12,6 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-Postulante >> colAString: col [
-String
-		streamContents: [ :s | col do: [ :each | s nextPutAll: each asString ] ]
-]
-
-{ #category : #'as yet unclassified' }
 Postulante >> esPostulanteBuscado:nombreP [
 ^(nombreP=nombre)
 ]
@@ -34,6 +28,6 @@ Postulante >> getNombre [
 
 { #category : #printing }
 Postulante >> toString [ 
-^ 'Nombre: ', nombre, String cr,' incumbencias: ' ,(incumbencias asString). 
+^ 'Nombre: ', nombre, String cr,' incumbencias: ' ,incumbencias asString. 
 
 ]

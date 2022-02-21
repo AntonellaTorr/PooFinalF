@@ -62,3 +62,11 @@ exito:=false.
 
 
 ]
+
+{ #category : #printing }
+Persona >> toString [
+|cadena|
+cadena:= super toString.
+^cadena, ' DNI: ', DNI. 
+
+]

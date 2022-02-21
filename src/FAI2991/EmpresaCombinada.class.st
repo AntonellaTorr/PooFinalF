@@ -40,6 +40,14 @@ EmpresaCombinada >> puedeSerPostulante: mont tipo: tip [
 ^false.  
 ]
 
+{ #category : #printing }
+EmpresaCombinada >> toString [ 
+|cadena|
+cadena:= super toString.
+^cadena, ' ', colProductos asString.
+
+]
+
 { #category : #'as yet unclassified' }
 EmpresaCombinada >> verificarDescripcion:des [ 
 ^incumbencias =des.

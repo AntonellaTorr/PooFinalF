@@ -35,6 +35,7 @@ addMorph: listadoPropuestas;
 addMorph:botonBuscar;
 addMorph: nombreP;
 addMorph: botonSeleccionarProp. 
+
 nombreP hide. 
 botonSeleccionarProp hide.
 

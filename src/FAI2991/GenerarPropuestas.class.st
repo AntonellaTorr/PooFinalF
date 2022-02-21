@@ -10,7 +10,7 @@ Class {
 { #category : #'as yet unclassified' }
 GenerarPropuestas >> crearComponentes [ 
 listado:= RubScrolledTextMorph new.
-listado beReadOnly; extent: 300 @ 500; left: self left + 500; top: 60.
+listado beReadOnly; extent: 500 @ 500; left: 100; top: 60.
 (UnGestor generarPropuestasSolicitudesPendientes).
 self update: (UnGestor getColPropuestas).
 self addMorph: listado.

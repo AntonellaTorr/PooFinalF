@@ -20,7 +20,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 RegistrarEmpresaSolicitante >> crearComponentes [
-    | colProductos colRubros espacioDerecha tituloRub tituloProd|
+    | espacioDerecha tituloRub tituloProd|
     botonRegistrar    := Boton nombre: 'Guardar' tamanio: 200 @ 30.
     nombreEmpresa     := RubTextFieldMorph new.
     rango             := RubTextFieldMorph new.
@@ -51,7 +51,7 @@ RegistrarEmpresaSolicitante >> crearComponentes [
     rubro2 label: 'Limpieza'; extent: 100 @ 20; left: espacioDerecha + 100; top: nombreEmpresa bottom + 50.
     rubro3 label: 'Mecanica'; extent: 100 @ 20; left: espacioDerecha ; top: nombreEmpresa bottom + 90.
     rubro4 label: 'Construccion'; extent: 100 @ 20; left: espacioDerecha + 100; top: nombreEmpresa bottom + 90.
-"acomodar esto"
+
  	 producto1 label: 'Cartel'; extent: 100 @ 20; left: espacioDerecha  ; top: nombreEmpresa bottom + 200.
     producto2 label: 'Conteiner'; extent: 100 @ 20; left: espacioDerecha + 100; top: nombreEmpresa bottom + 200.
     producto3 label: 'Ladrillos'; extent: 100 @ 20; left: espacioDerecha  ; top: nombreEmpresa bottom + 250.
@@ -89,7 +89,26 @@ RegistrarEmpresaSolicitante >> crearComponentes [
 		
 
     UnGestor addDependent: self.
-    botonRegistrar
+    
+			
+	
+
+]
+
+{ #category : #initialization }
+RegistrarEmpresaSolicitante >> initialize [
+
+	super initialize.
+	self crearComponentes. 
+	 
+
+	
+]
+
+{ #category : #'as yet unclassified' }
+RegistrarEmpresaSolicitante >> registrarEmpresaS [
+|colProductos colRubros|
+botonRegistrar
         mouseAction: [ colProductos := OrderedCollection new.
             colRubros := OrderedCollection new.
             rubro1 buttonMorph selected
@@ -112,19 +131,6 @@ RegistrarEmpresaSolicitante >> crearComponentes [
 				productos: colProductos. 
 				self update: UnGestor getColPostulantes
 				 ].
-			
-	
-
-]
-
-{ #category : #initialization }
-RegistrarEmpresaSolicitante >> initialize [
-
-	super initialize.
-	self crearComponentes. 
-	 
-
-	
 ]
 
 { #category : #'as yet unclassified' }
