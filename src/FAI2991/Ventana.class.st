@@ -53,7 +53,7 @@ Ventana >> initialize [
 	self
 		beSticky;
 		extent: 1000 @ 600;
-		color: Color lightGray;
-		borderColor: Color transparent;
+		color: (Color black);
+		borderColor: Color black;
 		crearBotonCerrado
 ]

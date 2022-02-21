@@ -67,7 +67,7 @@ RegistrarPostulante >> crearComponentes [
 			
 	
     tituloRub := Titulo crearConTitulo: 'Selecione el rubro/incumbencias' tam:  11.
-	 tituloRub top: 100; left: espacioDerecha; color: Color black .	
+	 tituloRub top: 100; left: espacioDerecha; color: Color white .	
 	
     rubro1 label: 'Ropa'; extent: 100 @ 20; left: espacioDerecha ; top: nombre bottom + 50.
     rubro2 label: 'Limpieza'; extent: 100 @ 20; left: espacioDerecha + 100; top: nombre bottom + 50.
@@ -83,7 +83,7 @@ RegistrarPostulante >> crearComponentes [
 	   
 	 titulo1:= Titulo crearConTitulo: 'Seleccione el tipo de empresa' tam: 11.
 	 espacioDerecha:= self left + 100.
-	 titulo1 top: 30; left: espacioDerecha; color: Color black .
+	 titulo1 top: 30; left: espacioDerecha; color: Color white. 
 	 tipo extent: 200 @ 20; left: espacioDerecha ; top: 250.
 	 rango extent: 200 @ 20; left: espacioDerecha ; top: 200; ghostText: 'Ingrese el rango'.
 	

@@ -20,7 +20,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 RegistrarEmpresaSolicitante >> crearComponentes [
-    | colProductos colRubros espacioDerecha tituloRan tituloRub|
+    | colProductos colRubros espacioDerecha tituloRub tituloProd|
     botonRegistrar    := Boton nombre: 'Guardar' tamanio: 200 @ 30.
     nombreEmpresa     := RubTextFieldMorph new.
     rango             := RubTextFieldMorph new.
@@ -34,16 +34,17 @@ RegistrarEmpresaSolicitante >> crearComponentes [
     producto3     := CheckboxMorph new.
 
     espacioDerecha:= self left + 100.
-    tituloRan := Titulo crearConTitulo: 'Ingrese el rango' tam: 15.
 
-    tituloRub := Titulo crearConTitulo: 'Selecione el rubro' tam:  15.
-	 tituloRub top: 50; left: espacioDerecha; color: Color yellow .
-	
+    tituloRub := Titulo crearConTitulo: 'Selecione el rubro' tam:  11.
+	 tituloRub top: 100; left: espacioDerecha; color: Color white .
+
+	 tituloProd := Titulo crearConTitulo: 'Selecione los productos(si posee)' tam:  11.
+	 tituloProd top: 250; left: espacioDerecha; color: Color white .	
 
 
 
   
-    nombreEmpresa extent: 400 @ 90; left: espacioDerecha ; top: tituloRub bottom + 60; ghostText: 'Ingrese el nombre'; borderStyle: (BottomBorder new width: 2); color: (Color r: 0.40 g: 0.42 b: 0.60).
+    nombreEmpresa extent: 350 @ 90; left: espacioDerecha ; top: 60; ghostText: 'Ingrese el nombre'; borderStyle: (BottomBorder new width: 2); color: (Color r: 0.40 g: 0.42 b: 0.60).
  
 
     rubro1 label: 'Ropa'; extent: 100 @ 20; left: espacioDerecha ; top: nombreEmpresa bottom + 50.
@@ -51,27 +52,28 @@ RegistrarEmpresaSolicitante >> crearComponentes [
     rubro3 label: 'Mecanica'; extent: 100 @ 20; left: espacioDerecha ; top: nombreEmpresa bottom + 90.
     rubro4 label: 'Construccion'; extent: 100 @ 20; left: espacioDerecha + 100; top: nombreEmpresa bottom + 90.
 "acomodar esto"
- 	 producto1 label: 'Repuestos'; extent: 100 @ 20; left: espacioDerecha  ; top: nombreEmpresa bottom + 200.
-    producto2 label: 'Jabon'; extent: 100 @ 20; left: espacioDerecha + 100; top: nombreEmpresa bottom + 200.
+ 	 producto1 label: 'Cartel'; extent: 100 @ 20; left: espacioDerecha  ; top: nombreEmpresa bottom + 200.
+    producto2 label: 'Conteiner'; extent: 100 @ 20; left: espacioDerecha + 100; top: nombreEmpresa bottom + 200.
     producto3 label: 'Ladrillos'; extent: 100 @ 20; left: espacioDerecha  ; top: nombreEmpresa bottom + 250.
 
 
 
-    tituloRan top: rubro3 bottom + 60; left: espacioDerecha; color: Color yellow.
+   
 
-    rango extent: 400 @ 90; left: espacioDerecha ; top: tituloRan bottom + 50; ghostText: 'Ingrese el rango'; borderStyle: (BottomBorder new width: 2); color: (Color r: 0.40 g: 0.42 b: 0.60).
+    rango extent: 350 @ 90; left: espacioDerecha ; top:220; ghostText: 'Ingrese el rango'; borderStyle: (BottomBorder new width: 2); color: (Color r: 0.40 g: 0.42 b: 0.60).
 
-    botonRegistrar left: self left + 50; top: rango bottom + 50.
+    botonRegistrar left: espacioDerecha ; top: 450.
 
     listadoEmpresasSol beReadOnly; extent: 300 @ 500; left: self left + 500; top: 60.
 
-tipo := SearchMorph new.
+		tipo := SearchMorph new.
 		tipo content: 'Actividades Uniformes'.
 		tipo content: 'Actividades Puntuales'.
 		tipo content: 'Combinadas'.
+		tipo  left: espacioDerecha ; top: 370.
  
         self addMorph: tituloRub; 
-        addMorph: tituloRan;
+		  addMorph: tituloProd; 
         addMorph: botonRegistrar;
         addMorph: nombreEmpresa;
         addMorph: rango;

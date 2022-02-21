@@ -24,10 +24,10 @@ botonBuscar:=  Boton nombre: 'Buscar propuestas' tamanio: 200 @ 30.
 botonBuscar left: self left + 100; top: 100.
 
 botonSeleccionarProp :=  Boton nombre: 'Aceptar una propuesta' tamanio: 200@ 30.
-botonSeleccionarProp left: self left + 100; top: botonBuscar bottom + 50.
+botonSeleccionarProp left: self left + 100; top: 150.
 
 nombreP:=  RubTextFieldMorph new.
-nombreP extent:370 @ 90; left: self left+100 ; top:botonSeleccionarProp bottom +50; ghostText: 'Ingrese el nombre del postulante cuya propuesta desee seleccionar'.
+nombreP extent:372 @ 90; left: self left+100 ; top:100; ghostText: 'Ingrese el nombre del postulante cuya propuesta desee seleccionar'.
 
 self 
 addMorph: id;
@@ -41,8 +41,10 @@ botonSeleccionarProp hide.
 botonBuscar mouseAction: [
 
 	self update:(UnGestor buscarPropuestasConId: id text asString).
+	nombreP show. 
+	botonBuscar hide.
 	botonSeleccionarProp show.
-	 botonSeleccionarProp mouseAction: [ nombreP show. UnGestor aceptarPropuesta: id nombrePos: nombreP asString. ].
+	 botonSeleccionarProp mouseAction: [ UnGestor aceptarPropuesta: id nombrePos: nombreP asString. ].
 	].
 
 

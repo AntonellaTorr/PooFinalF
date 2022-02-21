@@ -118,7 +118,7 @@ GestorDeEmpleos >> encontrarPostulantes: sol [
  | colPos |
     colPos := OrderedCollection new.
     colPostulantes ifNotNil: [ 
-colPos:=    colPostulantes select: [ :pos | (sol cumpleRequisitos: pos)] ].
+	colPos:= colPostulantes select: [ :pos | (sol cumpleRequisitos: pos)] ].
     ^ colPos
 ]
 
