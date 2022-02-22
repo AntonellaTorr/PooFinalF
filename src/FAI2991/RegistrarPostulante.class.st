@@ -27,7 +27,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 RegistrarPostulante >> crearComponentes [
-| espacioDerecha titulo1| 
+| espacioDerecha titulo1 colR  colR2 colR3 colP| 
 	postulantePersona := Boton nombre: 'Postulante Persona' tamanio: 200 @ 30.
 	postulanteEmpresa := Boton nombre: 'Postulante Empresa' tamanio: 200 @ 30.
 	postulanteEmpresaCombinada  := Boton nombre: 'Postulante Empresa Combinada' tamanio: 200 @ 30.
@@ -40,9 +40,10 @@ RegistrarPostulante >> crearComponentes [
 	producto3     := CheckboxMorph new.
 	listadoPostulantes := RubScrolledTextMorph new.
 	tipo := SearchMorph new.
+	rango := SearchMorph new.
 	nombre :=RubTextFieldMorph new.
 	DNI:=RubTextFieldMorph new. 
-	rango := RubTextFieldMorph new. 
+	"rango := RubTextFieldMorph new." 
 	guardadoPersona:= Boton nombre: 'Registrar persona' tamanio: 200 @ 30.
 	guardadoEmpresa:= Boton nombre: 'Registrar Empresa' tamanio: 200 @ 30. 
 	guardadoEmpresaC:= Boton nombre: 'Registrar Empresa Combinada' tamanio: 200 @ 30.
@@ -85,7 +86,13 @@ RegistrarPostulante >> crearComponentes [
 	 espacioDerecha:= self left + 100.
 	 titulo1 top: 30; left: espacioDerecha; color: Color white. 
 	 tipo extent: 200 @ 20; left: espacioDerecha ; top: 250.
-	 rango extent: 200 @ 20; left: espacioDerecha ; top: 200; ghostText: 'Ingrese el rango'.
+	
+	 rango content: '100'.
+	 rango content: '150'.
+	 rango content: '200'.
+	 rango content: '250'.	
+	 rango content: '300'. 
+	 rango extent: 200 @ 20; left: espacioDerecha ; top: 200.
 	
 
 	   UnGestor addDependent: self.
@@ -115,6 +122,41 @@ RegistrarPostulante >> crearComponentes [
 
     UnGestor addDependent: self.	
 
+	postulantePersona  mouseAction: [  self mostrarFormularioP ].
+	postulanteEmpresa  mouseAction: [  self mostrarFormularioE].
+	postulanteEmpresaCombinada  mouseAction: [  self mostrarFormularioEC ].
+		
+		
+	guardadoPersona   mouseAction: [ 	
+				colR:= OrderedCollection new.
+				(rubro1 buttonMorph selected) ifTrue: [ colR add:  rubro1 label ].	
+				(rubro2 buttonMorph selected) ifTrue: [ colR add: rubro2 label ].
+				(rubro3 buttonMorph selected)	ifTrue: [ colR add: rubro3 label ].
+				(rubro4 buttonMorph selected)	ifTrue: [ colR add: rubro4 label ].					
+				UnGestor registrarPostulante: colR nombre: nombre text asString DNI:DNI text asString	 .  
+				self update: UnGestor getColPostulantes.
+			].
+	guardadoEmpresa  mouseAction: [  
+				colR2:= OrderedCollection new.
+				(rubro1 buttonMorph selected) ifTrue: [ colR2 add:  rubro1 label ].	
+				(rubro2 buttonMorph selected) ifTrue: [ colR2 add: rubro2 label ].
+				(rubro3 buttonMorph selected)	ifTrue: [ colR2 add: rubro3 label ].
+				(rubro4 buttonMorph selected)	ifTrue: [ colR2 add: rubro4 label ].		
+				UnGestor registrarPostulante: colR2 nombre: nombre text asString tipo: tipo selectedItem rango: rango selectedItem.  self update: UnGestor getColPostulantes.].
+	
+	guardadoEmpresaC  mouseAction: [
+					colR3:= OrderedCollection new.
+					(rubro1 buttonMorph selected) ifTrue: [ colR3 add:  rubro1 label ].	
+					(rubro2 buttonMorph selected) ifTrue: [ colR3 add: rubro2 label ].
+					(rubro3 buttonMorph selected)	ifTrue: [ colR3 add: rubro3 label ].
+					(rubro4 buttonMorph selected)	ifTrue: [ colR3 add: rubro4 label ].		
+						
+					 colP:= OrderedCollection new.
+					(producto1) buttonMorph selected ifTrue: [ colP add: producto1 label ].
+					(producto2) buttonMorph selected ifTrue: [ colP add: producto2 label ].
+               (producto3) buttonMorph selected  ifTrue: [ colP add: producto3 label ] .
+		 UnGestor registrarPostulante:  colR3 nombre: nombre text asString tipo: tipo selectedItem rango: rango selectedItem  colProductos:colP.
+	 self update: UnGestor getColPostulantes.].
 
 		
 		
@@ -232,6 +274,7 @@ RegistrarPostulante >> registrarPostulantes [
 				(rubro1 buttonMorph selected) ifTrue: [ colR add:  rubro1 label ].	
 				(rubro2 buttonMorph selected) ifTrue: [ colR add: rubro2 label ].
 				(rubro3 buttonMorph selected)	ifTrue: [ colR add: rubro3 label ].
+				(rubro4 buttonMorph selected)	ifTrue: [ colR add: rubro4 label ].					
 				UnGestor registrarPostulante: colR nombre: nombre text asString DNI:DNI text asString	 .  
 				self update: UnGestor getColPostulantes.
 			].
@@ -240,19 +283,21 @@ RegistrarPostulante >> registrarPostulantes [
 				(rubro1 buttonMorph selected) ifTrue: [ colR2 add:  rubro1 label ].	
 				(rubro2 buttonMorph selected) ifTrue: [ colR2 add: rubro2 label ].
 				(rubro3 buttonMorph selected)	ifTrue: [ colR2 add: rubro3 label ].
-				UnGestor registrarPostulante: colR nombre: nombre text asString tipo: tipo   rango: rango.  self update: UnGestor getColPostulantes.].
+				(rubro4 buttonMorph selected)	ifTrue: [ colR2 add: rubro4 label ].		
+				UnGestor registrarPostulante: colR2 nombre: nombre text asString tipo: tipo selectedItem rango: rango.  self update: UnGestor getColPostulantes.].
 	
 	guardadoEmpresaC  mouseAction: [
 					colR3:= OrderedCollection new.
 					(rubro1 buttonMorph selected) ifTrue: [ colR3 add:  rubro1 label ].	
 					(rubro2 buttonMorph selected) ifTrue: [ colR3 add: rubro2 label ].
 					(rubro3 buttonMorph selected)	ifTrue: [ colR3 add: rubro3 label ].
+					(rubro4 buttonMorph selected)	ifTrue: [ colR3 add: rubro4 label ].		
 						
 					 colP:= OrderedCollection new.
 					(producto1) buttonMorph selected ifTrue: [ colP add: producto1 label ].
 					(producto2) buttonMorph selected ifTrue: [ colP add: producto2 label ].
                (producto3) buttonMorph selected  ifTrue: [ colP add: producto3 label ] .
-		 UnGestor registrarPostulante:  colR nombre: nombre text asString tipo: tipo   rango: rango colProductos:colP.
+		 UnGestor registrarPostulante:  colR3 nombre: nombre text asString tipo: tipo selectedItem rango: rango  colProductos:colP.
 	 self update: UnGestor getColPostulantes.].
 ]
 

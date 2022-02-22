@@ -45,5 +45,5 @@ monto:=m.
 DeServicio >> toString [ 
 |cadena|
 cadena:= super toString. 
-^cadena, 'tipo: ', tipo, 'monto: ',monto.
+^cadena, ' tipo: ', tipo, ' monto: ',monto.
 ]

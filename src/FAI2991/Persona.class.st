@@ -55,9 +55,9 @@ incumbencias:= incumben.
 
 { #category : #'as yet unclassified' }
 Persona >> puedeSerPostulante:monto tipo:tip [
-|exito|
+|exito |
 exito:=false. 
-(monto<=MAXIMOINDIVIDUAL  ) ifTrue:[exito:=true].
+((MAXIMOINDIVIDUAL>=  monto)) ifTrue:[exito:=true].
 ^exito.
 
 
@@ -67,6 +67,6 @@ exito:=false.
 Persona >> toString [
 |cadena|
 cadena:= super toString.
-^cadena, ' DNI: ', DNI. 
+^cadena, String cr, ' DNI: ', DNI. 
 
 ]

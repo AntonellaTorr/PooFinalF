@@ -44,7 +44,7 @@ EmpresaCombinada >> puedeSerPostulante: mont tipo: tip [
 EmpresaCombinada >> toString [ 
 |cadena|
 cadena:= super toString.
-^cadena, ' ', colProductos asString.
+^cadena, String cr, ' productos: ', colProductos asString.
 
 ]
 

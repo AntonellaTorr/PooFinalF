@@ -49,8 +49,9 @@ RegistrarSolicitud >> crearComponentes [
 
 
 	 tipo := SearchMorph new.
-	 tipo content: 'Uniformes'.
-	 tipo content: 'Puntuales'.
+	 tipo content: 'Actividades Uniformes'.
+	 tipo content: 'Actividades Puntuales'.
+	 tipo content: 'Combinadas'.
 	 tipo extent: 200 @30 ; left: espacioDerecha ; top:415.
 	
 	 rub := SearchMorph new.
@@ -201,15 +202,15 @@ solicitudServicio mouseAction: [ self formularioSolServicio].
 solicitudServicioProducto mouseAction: [ self formularioServicioYProd].
 	
 				
-			guardadoTrabajo mouseAction: [UnGestor registrarSolicitud: (id  text asString) caracteristicas: rub unNombre: nombreEmpresa text asString fechaValidez: calendar date.
+			guardadoTrabajo mouseAction: [UnGestor registrarSolicitud: (id  text asString) caracteristicas: rub selectedItem unNombre: nombreEmpresa text asString fechaValidez: calendar date.
 				self update: (UnGestor getColSolicitudes)].
 			
 			guardadoServicioYP mouseAction: [ 
 			
-				UnGestor registrarSolicitud: id text asString  caracteristicas: rub unNombre: nombreEmpresa text asString fechaValidez: calendar date tipo:tipo monto:monto	producto:producto.
+				UnGestor registrarSolicitud: id text asString  caracteristicas: rub selectedItem unNombre: nombreEmpresa text asString fechaValidez: calendar date tipo:tipo selectedItem monto:monto text asString	producto:producto.
 				self update: (UnGestor getColSolicitudes)].
 			
-			guardadoServicio mouseAction: [UnGestor registrarSolicitud: (id text asString) caracteristicas: rub unNombre: nombreEmpresa text asString fechaValidez: calendar date 	tipo:tipo monto: monto.
+			guardadoServicio mouseAction: [UnGestor registrarSolicitud: (id text asString) caracteristicas: rub selectedItem unNombre: nombreEmpresa text asString fechaValidez: calendar date 	tipo:tipo selectedItem  monto: monto text asString .
 							self update: (UnGestor getColSolicitudes)
 							].
 			

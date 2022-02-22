@@ -43,5 +43,5 @@ producto := produc.
 YProducto >> toString [ 
 |cadena|
 cadena:= super toString. 
-^cadena, 'producto: ', producto.
+^cadena, String cr,' producto: ', producto.
 ]

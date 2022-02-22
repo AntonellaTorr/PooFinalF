@@ -49,7 +49,7 @@ estado:=es.
 
 { #category : #printing }
 Propuesta >> toString [ 
-^'Propuesta con', String cr,
-'Solicitud ', (solicitud toString),
-String cr, ' Postulante ' ,(postulante toString).
+^'Propuesta con :', String cr,
+'.', (solicitud toString),
+String cr, ' .Postulante ' ,(postulante toString).
 ]

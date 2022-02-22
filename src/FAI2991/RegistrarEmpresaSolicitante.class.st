@@ -23,7 +23,7 @@ RegistrarEmpresaSolicitante >> crearComponentes [
     | espacioDerecha tituloRub tituloProd|
     botonRegistrar    := Boton nombre: 'Guardar' tamanio: 200 @ 30.
     nombreEmpresa     := RubTextFieldMorph new.
-    rango             := RubTextFieldMorph new.
+    rango             := SearchMorph new.
     listadoEmpresasSol := RubScrolledTextMorph new.
     rubro1         := CheckboxMorph new.
     rubro2         := CheckboxMorph new.
@@ -60,7 +60,7 @@ RegistrarEmpresaSolicitante >> crearComponentes [
 
    
 
-    rango extent: 350 @ 90; left: espacioDerecha ; top:220; ghostText: 'Ingrese el rango'; borderStyle: (BottomBorder new width: 2); color: (Color r: 0.40 g: 0.42 b: 0.60).
+ 	rango extent: 200 @ 20; left: espacioDerecha ; top: 200.
 
     botonRegistrar left: espacioDerecha ; top: 450.
 
@@ -71,6 +71,11 @@ RegistrarEmpresaSolicitante >> crearComponentes [
 		tipo content: 'Actividades Puntuales'.
 		tipo content: 'Combinadas'.
 		tipo  left: espacioDerecha ; top: 370.
+		rango content: '100'.
+		rango content: '150'.
+	 	rango content: '200'.
+	 	rango content: '250'.	
+	 	rango content: '300'. 
  
         self addMorph: tituloRub; 
 		  addMorph: tituloProd; 
@@ -100,6 +105,7 @@ RegistrarEmpresaSolicitante >> initialize [
 
 	super initialize.
 	self crearComponentes. 
+	self registrarEmpresaS.
 	 
 
 	
@@ -127,7 +133,7 @@ botonRegistrar
  	UnGestor  registrarEmpresasSolicitantes: nombreEmpresa text asString
 				rubro: colRubros
 				tipo: tipo selectedItem
-				rango: rango 
+				rango: rango selectedItem
 				productos: colProductos. 
 				self update: UnGestor getColPostulantes
 				 ].

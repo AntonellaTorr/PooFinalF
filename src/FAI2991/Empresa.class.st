@@ -66,7 +66,7 @@ Empresa >> puedeSerPostulante: monto tipo:ti [
 Empresa >> toString [
 |cadena|
 cadena:= super toString.
-^cadena, ' tipo: ',tipo, ' rango: ', rango.
+^cadena, String cr, ' tipo: ', tipo , String cr,' rango: ', rango .
 
 ]
 

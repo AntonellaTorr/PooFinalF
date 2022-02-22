@@ -20,7 +20,7 @@ GestorDeEmpleos class >> crear [
 |nuevoGestor|
 nuevoGestor := self new. 
 nuevoGestor  inicializar. 
-Persona maximoPorPersona: 100.
+Persona maximoPorPersona: 1000.
 Empresa valorPorPunto: 10. 
 ^nuevoGestor 
 ]
