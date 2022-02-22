@@ -23,9 +23,9 @@ unaS inicializarConId: unID fechaVal:unaFechaValidez caracteristicas: car tipo:t
 DeServicio >> cumpleRequisitos: pos [ 
     | res cumple |
     res := super cumpleRequisitos: pos.
-    cumple := res
-                  ifTrue: [ pos puedeSerPostulante: monto tipo: tipo ]
-                  ifFalse: [ false ].
+	 cumple:=
+    res      ifTrue: [ pos puedeSerPostulante: monto tipo: tipo ]
+                 ifFalse: [ false ].
     ^ cumple
 
 ]
@@ -45,5 +45,5 @@ monto:=m.
 DeServicio >> toString [ 
 |cadena|
 cadena:= super toString. 
-^cadena, ' tipo: ', tipo, ' monto: ',monto.
+^cadena, ' tipo: ', tipo, String cr, ' monto: ',monto.
 ]

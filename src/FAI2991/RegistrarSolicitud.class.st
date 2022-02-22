@@ -202,15 +202,15 @@ solicitudServicio mouseAction: [ self formularioSolServicio].
 solicitudServicioProducto mouseAction: [ self formularioServicioYProd].
 	
 				
-			guardadoTrabajo mouseAction: [UnGestor registrarSolicitud: (id  text asString) caracteristicas: rub selectedItem unNombre: nombreEmpresa text asString fechaValidez: calendar date.
+			guardadoTrabajo mouseAction: [UnGestor registrarSolicitud: (id  text asString) caracteristicas: (rub selectedItem) asString unNombre: nombreEmpresa text asString fechaValidez: calendar date.
 				self update: (UnGestor getColSolicitudes)].
 			
 			guardadoServicioYP mouseAction: [ 
 			
-				UnGestor registrarSolicitud: id text asString  caracteristicas: rub selectedItem unNombre: nombreEmpresa text asString fechaValidez: calendar date tipo:tipo selectedItem monto:monto text asString	producto:producto.
+				UnGestor registrarSolicitud: id text asString  caracteristicas: (rub selectedItem) asString unNombre: nombreEmpresa text asString fechaValidez: calendar date tipo:tipo selectedItem monto:monto text asString	producto:producto.
 				self update: (UnGestor getColSolicitudes)].
 			
-			guardadoServicio mouseAction: [UnGestor registrarSolicitud: (id text asString) caracteristicas: rub selectedItem unNombre: nombreEmpresa text asString fechaValidez: calendar date 	tipo:tipo selectedItem  monto: monto text asString .
+			guardadoServicio mouseAction: [UnGestor registrarSolicitud: (id text asString) caracteristicas: (rub selectedItem) asString unNombre: nombreEmpresa text asString fechaValidez: calendar date 	tipo:tipo selectedItem  monto: monto text asString .
 							self update: (UnGestor getColSolicitudes)
 							].
 			

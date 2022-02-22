@@ -11,9 +11,12 @@ Class {
 GenerarPropuestas >> crearComponentes [ 
 listado:= RubScrolledTextMorph new.
 listado beReadOnly; extent: 500 @ 500; left: 100; top: 60.
-(UnGestor generarPropuestasSolicitudesPendientes).
-self update: (UnGestor getColPropuestas).
+UnGestor addDependent: self. 
 self addMorph: listado.
+(UnGestor generarPropuestasSolicitudesPendientes).
+
+self update: (UnGestor getColPropuestas).
+
 ]
 
 { #category : #initialization }

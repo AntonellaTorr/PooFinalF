@@ -57,7 +57,7 @@ incumbencias:= incumben.
 Persona >> puedeSerPostulante:monto tipo:tip [
 |exito |
 exito:=false. 
-((MAXIMOINDIVIDUAL>=  monto)) ifTrue:[exito:=true].
+((self class getMaximo  >=  monto)) ifTrue:[exito:=true].
 ^exito.
 
 

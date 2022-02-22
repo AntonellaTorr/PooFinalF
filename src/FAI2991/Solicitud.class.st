@@ -23,7 +23,7 @@ Solicitud >> cumpleCondiciones:fechaBuscada [
 Solicitud >> cumpleRequisitos:pos [
 |cumple|
 cumple:=false.
-(pos getIncumbencias includes:caracteristicas) ifTrue: [ cumple:=true ].
+((pos getIncumbencias) includes:caracteristicas) ifTrue: [ cumple:=true ].
 ^cumple
 ]
 
